@@ -33,3 +33,14 @@ Examinons ce projet:
 * Tanker4.Desktop: c'est le projet. Pour mémoire une solution peut contenir plusieurs projets
 * References: c'est un dossier maintenu par l'IDE où se trouvent les liens avec les bibliothèques et les frameworks
 * Paquets: c'est où les paquets Nugets sont stockés
+* Contents: dossier créé par MonoGame où seront stockés nos graphismes, nos sons, nos polices de caractères...
+* Properties: utile pour gérer des fichiers de configuration. Par exemple si on voulait lire/enregistrer la dernière taille de la fenêtre de jeu
+* x64/x86: dossiers créés par MonoGame. En fonction du type de micro processeur de l'ordinateur, le projet sera compilé d'une façon ou d'une autre
+* app.manifest: "je ne sais pas"
+* Game1.cs: classe créée par MonoGame. On se doute que l'essentiel des traitements graphiques du jeu s'y trouveront
+* icon.bmp/icon.ico: créé par MonoGame: probablement les icônes du programme
+* libopenal.1.dylib/libSDL2-2.0.0.dylib: des liens vers des bibliothèques de MonoGame
+* MonoGame.Framework.dll.config: Encore un fichier de configuration
+* Program.cs: le fichier que l'on connait déjà et depuis où tout commence
+
+A moins de vraiment savoir ce que l'on fait, il est préférable de ne pas renommer ou supprimer tous ces fichiers

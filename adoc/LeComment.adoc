@@ -131,4 +131,4 @@ Le rôle du compilateur est de traduire notre code écrit dans un certain langag
 
 ==== Exécution en mode test
 
-Une fois compilé on veut lancer le programme pour pouvoir l'utiliser. On va le voir dans le chapitre suivant, l'IDE permet de faire ça aussi. Ainsi si on clique sur le bouton image:imgs/play.png[Play, title="Play"] alors l'IDE demande au compilateur de compiler le programme et quand le compilateur répond que tout est ok, lance le programme.
+Une fois compilé on veut lancer le programme pour pouvoir l'utiliser. On va le voir dans le chapitre suivant, l'IDE permet de faire ça aussi. Ainsi si on clique sur le bouton image:play.png[Play, title="Play"] alors l'IDE demande au compilateur de compiler le programme et quand le compilateur répond que tout est ok, lance le programme.

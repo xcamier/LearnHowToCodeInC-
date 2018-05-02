@@ -4,7 +4,7 @@
 
 Nous allons aller de succès en succès et apprendre très progressivement comment afficher des choses à l'écran. Il faut se donner le temps de connaitre et d'apprivoiser la syntaxe du langage de programmation. Notre premier programme consistera dans un premier temps à écrire à l'écran comment on s'appelle. Ensuite nous allons apprivoiser nos notions en écrivant à l'écran le nom de toutes les personnes dans la pièce à l'écran. Enfin nous créerons notre première méthode pour rendre cela un peu plus professionnel. 
 
-==== Création de notre premier projet
+=== Création de notre premier projet
 
 Lancer Visual studio en cliquant sur son icône ou à l’aide du lanceur rapide
 Sur la page de démarrage cliquer sur « Nouveau projet»
@@ -12,7 +12,7 @@ Sélectionner "Application Console C#" dans la liste des propositions. Sur Mac c
 
 L’IDE devrait créer un morceau de code pré-rempli. 
 
-==== Écrire à l’écran comment on s’appelle
+=== Écrire à l’écran comment on s’appelle
 	
 Notre premier programme doit ressembler au code ci dessous:
 
@@ -80,7 +80,7 @@ On dit ici au programme que l’on va utiliser la méthode *"Console"* (qui soit
 A noter, à chaque fois que l’on termine de décrire une instruction, il faut terminer la ligne par un ";"		
 
 
-==== Lançons notre premier programme
+=== Lançons notre premier programme
 
 Pour se faire on va cliquer sur le bouton en forme de triangle ou utiliser le menu "Exécuter / Démarrer le déboguage".  Ce qu’il se passe:
 
