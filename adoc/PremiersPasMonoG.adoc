@@ -1,0 +1,35 @@
+:imagesdir: ./imgs
+== Premiers pas avec MonoGame
+
+Nous allons créer notre premier projet multiplateforme utilisant le framework. Pour se faire:
+
+* Lancer Visual Studio
+* Selectionner le menu Fichier / Nouvelle solution
+* La fenêtre ci dessous apparait alors
+
+[#img-ide04]
+.Sélection du type de projet
+image::IDE04.png[]
+
+* Aller dans la section "MonoGame" et choisir Application puis "MonoGame Cross Platform Desktop Application". Cela signifie que l'on va écrire un programme qui fonctionnera aussi bien sur Mac que sur PC et qui est destiné à un ordinateur (pas à un téléphone portable ou à une tablette)
+* Cliquer sur "Suivant". La fenêtre ci dessous s'ouvre
+
+[#img-ide05]
+.Nommage du projet
+image::IDE05.png[]
+
+* Mettez le nom du projet et le nom de la solution. Le nom de la solution sera le nom du jeu alors que le nom du projet sera... le nom du projet...
+* Cliquez sur créer
+
+Au bout de quelques secondes, l'IDE devrait avoir créé les fichiers et fait les liens qui conviennent pour faire fonctionner un tout nouveau projet MonoGame. Vous devez avoir quelque chose qui ressemble à l'image ci dessous:
+
+[#img-ide06]
+.Un projet tout frais !
+image::IDE06.png[]
+
+Examinons ce projet:
+
+* Tanker4: c'est la solution
+* Tanker4.Desktop: c'est le projet. Pour mémoire une solution peut contenir plusieurs projets
+* References: c'est un dossier maintenu par l'IDE où se trouvent les liens avec les bibliothèques et les frameworks
+* Paquets: c'est où les paquets Nugets sont stockés
