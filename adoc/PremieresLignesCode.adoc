@@ -1,0 +1,172 @@
+:imagesdir: ./imgs
+
+== Nos premières lignes de code
+
+Nous allons aller de succès en succès et apprendre très progressivement comment afficher des choses à l'écran. Il faut se donner le temps de connaitre et d'apprivoiser la syntaxe du langage de programmation. Notre premier programme consistera dans un premier temps à écrire à l'écran comment on s'appelle. Ensuite nous allons apprivoiser nos notions en écrivant à l'écran le nom de toutes les personnes dans la pièce à l'écran. Enfin nous créerons notre première méthode pour rendre cela un peu plus professionnel. 
+
+==== Création de notre premier projet
+
+Lancer Visual studio en cliquant sur son icône ou à l’aide du lanceur rapide
+Sur la page de démarrage cliquer sur « Nouveau projet»
+Sélectionner "Application Console C#" dans la liste des propositions. Sur Mac cela se trouve dans la section ".NET"
+
+L’IDE devrait créer un morceau de code pré-rempli. 
+
+==== Écrire à l’écran comment on s’appelle
+	
+Notre premier programme doit ressembler au code ci dessous:
+
+[source,java]
+----
+using System;
+
+namespace Tanker
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Je m’appelle Xavier");
+        }
+    }
+}
+
+----
+
+
+Voyons quelques éléments de syntaxe:
+
+[source,java]
+----
+using System;
+----
+
+Pour nous faciliter la vie, les auteurs du langage de programmation ont déjà programmé un certain nombre de fonctions "classiques". Ce sont des fonctions que l’on utilise très souvent en programmation et qui permettent de faire des choses simples. Ces ensembles de fonctions sont regroupés bibliothèques [5]. Il en existe vraiment beaucoup et nous en utiliserons quelques unes pour notre programme. *"using"* est le mot qui permet de dire "nous allons utiliser la bibliothèque s’appelant *"System"*"
+
+[source,java]
+----
+namespace SimpleProject00
+----
+
+Passons cette notion pour le moment.
+
+[source,java]
+----
+class MainClass 
+{}
+----
+
+C’est la syntaxe C# pour déclarer un objet. Pour faire simple nous considèrerons qu’un objet ou une classe est la même chose. Donc ici le mot *"class"* annonce que l’on va décrire un objet et que l’on l’appellera *"MainClass"*.
+
+A noter les accolades. L’accolade ouvrante marque le début de la classe et l’accolade fermante la fin de la classe.
+
+[source,java]
+----
+public static void Main(string[] args)
+{}
+----
+
+Nous avons dit tout à l’heure qu’un objet avait des propriétés et des capacités. Ces capacités sont des fonctions ou des méthodes. Et bien *"Main()"* est une méthode. Elle est un peu spéciale car elle obligatoire dans ce cas précis mais c’est une méthode. 
+
+La partie *"string[] args"* est ce que l’on appelle "les paramètres d’entrée". Ca veut dire que l’on donne à la méthode quelques informations qu’elle pourra utiliser si nécessaire. Nous y reviendrons plus tard. 
+
+[source,java]
+----
+Console.WriteLine("Je m’appelle Xavier");
+----
+
+On dit ici au programme que l’on va utiliser la méthode *"Console"* (qui soit dit en passant provient de la bibliothèque *"System"* pour écrire la ligne "Je m’appelle Xavier". 
+
+A noter, à chaque fois que l’on termine de décrire une instruction, il faut terminer la ligne par un ";"		
+
+
+==== Lançons notre premier programme
+
+Pour se faire on va cliquer sur le bouton en forme de triangle ou utiliser le menu "Exécuter / Démarrer le déboguage".  Ce qu’il se passe:
+
+* L’IDE appelle le compilateur en lui envoyant le projet que l’on a tapé
+* Le compilateur traduit le code en langage machine (compréhensible par l’ordinateur)
+* Le compilateur dit à l’IDE si ça a bien fonctionné ou pas. Si ça n’a pas bien fonctionné l’IDE va afficher les messages d’erreur. Si ça a bien fonctionné alors…
+* … l’IDE va lancer le programme
+* Le système (Windows ou Mac OSX) va lancer le programme. Comme c’est un programme console, le système va savoir par convention qu’il faut qu’il crée une instance de la classe *"MainClass"* et qu’il appelle la méthode *"Main"*
+* La fenêtre ci dessous va s’afficher:
+
+[#img-fenetre00]
+.Notre premier programme 
+image::Fenetre00.png[]
+
+=== Nos premières variables
+
+Nous allons commencer à utiliser des variables pour comprendre comment elles fonctionnent. On va modifier la méthode Main comme suit:
+
+[source,java]
+----
+public static void Main(string[] args)        
+{            
+    string nom = "Mon nom est CAMIER";
+    Console.WriteLine(nom);            
+    string prenom = "Mon prénom est Xavier";
+    Console.WriteLine(prenom);        
+}
+----
+
+
+Pour comprendre ce que fait un programme, il faut le lire un peu comme on lirait un livre:
+
+* On met "Mon nom est CAMIER" dans une zone mémoire appelée *"nom"*
+
+[#img-memoire01]
+.Espace mémoire occupé par la variable "nom"
+image::Memoire01.png[]
+
+* On affiche sur la console, une ligne qui contient la zone mémoire appelée *"nom"*
+* On met "Mon prénom est Xavier" dans une zone mémoire appelée *"prenom"*
+
+[#img-memoire02]
+.Espace mémoire occupé par les variables "nom" et "prenom"
+image::Memoire02.png[]
+
+* On affiche sur la console une ligne qui contient la zone mémoire appelée *"prenom"*
+
+=== Réutilisation des variables 
+
+Modifions très légèrement notre programme:
+
+[source,java]
+----
+public static void Main(string[] args)        
+{            
+    string nom = "Mon nom est CAMIER";            
+    Console.WriteLine(nom);            
+    nom = "Mon prénom est Xavier";            
+    Console.WriteLine(nom);        
+}
+----
+
+
+La différence avec l’exemple précédent est que l’on réutilise la variable nom. Comme elle existe déjà on n’a plus besoin de la déclarer à l’aide du mot *"string"*. 
+
+Si on lit le programme:
+
+* On met "Mon nom est CAMIER" dans une zone mémoire appelée *"nom"*
+
+[#img-memoire03]
+.Espace mémoire occupé par la variables "nom"
+image::Memoire03.png[]
+
+* On affiche sur la console, une ligne qui contient la zone mémoire appelée *"nom"*
+* On met "Mon prénom est Xavier" dans la zone mémoire appelée *"nom"*
+
+[#img-memoire04]
+.Réutilisation de l'espace mémoire de la variable "nom"
+image::Memoire04.png[]
+
+* On affiche sur la console une ligne qui contient la zone mémoire appelée *"nom"*.
+
+Ce que l’on comprend ici est que l’on peut réutiliser de la mémoire pour ne pas trop la remplir. Comme les instructions sont réalisées par l’ordinateur en suivant l’ordre de lecture ce n’est pas un souci et nous avons bien nos deux lignes de texte comme ci dessous:
+
+[#img-fenetre01]
+.Résultat de la réutilisation de l'espace mémoire de la variable "nom"
+image::Fenetre01.png[]
+
+Une variable est donc un sac que l’on rempli, vide, re-rempli comme on le souhaite. On peut créer autant de sacs différents qu’il y a de mémoire disponible.

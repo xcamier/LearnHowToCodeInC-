@@ -1,0 +1,45 @@
+:imagesdir: ./imgs
+
+== Un peu de planification
+=== Théorie
+
+« On démarre petit et on améliore au fur et à mesure »
+
+Ca veut dire que l’on va faire quelque chose de simple et au fur et à mesure on va lui ajouter des fonctionnalités. Ça a plein d’avantages: 
+
+Ca force à décomposer le problème et à le rendre plus gérable « mentalement »
+Quand on a terminé une étape on a quelque chose qui fonctionne. C’est toujours sympa de voir sa progression…
+Ca rend les différentes étapes testables par soi même ou par quelqu’un d’autre. On trouve les bogues ou les améliorations plus facilement
+
+
+Dans mon esprit je vois ça comme un oignon:
+
+[#img-oignon]
+.Vue en couches
+image::Oignon.png[]
+
+
+=== Pratique
+
+À la vue de notre mockup [2], voyons comment nous pouvons décomposer notre projet en étapes.
+
+
+[width="100%",options="header", cols="1,4"]
+|====================
+| N° d'étape |Description  
+|1 |Définir ce que sont les joueurs  
+|2 |Définir ce qu'est une partie  
+|3 |Définir l'aire de jeu et y afficher les informations sur les joueurs  
+|4 |Définir ce que sont les tanks  
+|5 |Afficher et contrôler les tanks dans l’aire de jeu  
+|6 |Ajouter un pouvoir de destruction aux tanks  
+|7 |Définir ce qu’est le labyrinthe   
+|8 |Afficher le labyrinthe dans l’aire de jeu  
+|9 |Empêcher les tanks de traverser les murs  
+|10 |Quelque chose à améliorer ?  
+|====================
+
+
+C’est un plan de départ. Il nous faudra nous adapter aux difficultés que nous rencontrerons mais c’est un bon début !
+
+Maintenant que l’on a une petite idée de ce que l’on veut réaliser (le quoi) et que l’on a compris qu’il fallait définir des étapes, on va travailler à la réalisation.

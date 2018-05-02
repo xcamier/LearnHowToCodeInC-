@@ -1,0 +1,391 @@
+:imagesdir: ./imgs
+
+== Retour au jeu: notre classe joueur
+
+Dans ce chapitre nous allons utiliser tout ce que nous avons appris jusqu'ici et ajouter quelques concepts. Mais au final le plus difficile pour cette première classe est déjà connu. Avant de commencer vérifiez si vous avez retenu et compris les concepts suivants:
+
+* Qu'est ce qu'une classe/un objet et qu'est ce qu'une instance de classe et d'objet
+
+* Qu'est ce qu'une variable
+
+* Qu'est ce qu'une portée (rien à voir avec la musique)
+
+* Qu'est ce qu'une méthode ou une fonction
+
+Nous devons combiner toutes ces notions alors si vous avez la sensation de ne pas avoir bien compris, il est préférable de revenir sur les châpitres précédents avant d'aborder celui ci. Ce n'est pas grave du tout, c'est même plutôt normal.
+
+Vous vous sentez prêts ? Parfait ! Allons y…
+
+=== Création de la classe
+
+Une fois encore l'IDE va nous faciliter la vie. Pour nous il va créer le fichier, le placer correctement dans le projet et créer un exemple de classe que nous pourrons réutiliser facilement.
+
+Pour commencer aller dans la zone de projet et le sélectionner. Cliquer avec le bouton droit et dans le menu contextuel choisir Ajouter/Nouveau fichier. Une boite de dialogue apparait. 
+
+[#img-ide00]
+.L'IDE permet de faciliter la gestion du code source
+image::IDE00.png[]
+
+La boite de dialogue nous permet de sélectionner à quoi va servir le fichier qui va être créé. Nous voulons créer une classe donc tout naturellement il faut sélectionner *"Classe vide"* dans la liste. Dans le bas de la fenêtre on entre le nom de la classe. Dans notre cas… suspens… *"Joueur"*. Enfin on va cliquer le bouton *"Nouveau"*. 
+
+[#img-ide01]
+.Cette boite permet de sélectionner des fichiers types
+image::IDE01.png[]
+
+[#img-ide02]
+.Entrer le nom de la classe. Garder des noms simples
+image::IDE02.png[]
+
+Si on observe à nouveau notre projet sur la gauche, on observe que la classe a été ajoutée comme voulu. Enfin sur la droite on voit que l’IDE a créé le squelette de la classe pour nous. 
+
+[#img-ide03]
+.Le navigateur nous permet de passer d'une classe à l'autre
+image::IDE03.png[]
+
+=== Description de notre classe
+
+[source,java]
+----
+using System;
+
+namespace SimpleProject00
+{
+    public class Joueur
+    {
+        public Joueur()
+        {
+        }
+    }
+}
+----
+
+
+==== Ce que l’on connaît déjà
+
+Voyons quelques éléments de syntaxe:
+
+[source,java]
+----
+using System;
+----
+
+Appel à la bibliothèque *"System"* qui proposera quelques fonctions de base du langage.
+
+[source,java]
+----
+namespace SimpleProject00
+----
+
+Passons cette notion pour le moment.
+
+[source,java]
+----
+public class Joueur
+----
+
+Tout comme on doit déclarer une variable ou une méthode, il faut déclarer une classe. *"public"* défini la portée. *"class"* défini que ce que l’on déclare est une classe. Enfin *"Joueur"* est… le nom de la classe. 
+
+
+
+==== Une méthode un peu spéciale: le constructeur
+
+[source,java]
+----
+public Joueur()
+{}
+----
+
+Ceci ressemble très fort à une méthode ou à une fonction. Mais juste devant *"Joueur()"* il n’y a ni *"void"* ni un type de données comme string, int ou bool. 
+
+Cette méthode est ce que l’on appelle un *"constructeur"*. Quand la classe va être instanciée, cette méthode va être exécutée automatiquement et surtout avant tout autre morceau de code. C’est très pratique pour "préparer" la classe avant de l’utiliser. 
+
+Petit exemple. Notre joueur va démarrer avec un score égal à 0. Et bien quand nous allons créer la classe, avant de commencer à utiliser notre instance Joueur, nous aimerions que la propriété "Score" soit initialisée à 0. On pourra le faire dans le constructeur. 
+
+Comme pour une méthode ou une fonction, il est possible de passer des paramètres à un constructeur. 
+
+Pour bien illustrer le fonctionnement du constructeur nous allons le modifier comme suit. Nous en verrons les effets tout à l’heure.
+
+[source,java]
+----
+public Joueur()
+{
+    Console.WriteLine("Mon objet vient d'être créé");
+}
+----
+
+=== Ajout de propriétés à notre classe
+
+Souvenez vous de la stratégie de l’oignon. On commence petit et on améliore au fur et à mesure.
+
+[source,java]
+----
+public class Joueur
+{
+    private int m_score;
+    private string m_nomJoueur;
+    private string m_couleur;
+    
+    public Joueur()
+    {
+        Console.WriteLine("Mon objet vient d'être créé");
+    }    
+}
+----
+
+Pour faire simple les propriétés se déclarent en haut de la classe, avant de constructeur. Par convention et pour les différencier des variables classiques, j’aime bien les préfixer avec *"m_"*. Le *"m"* signifie *"variable de membre"*. C’est un peu technique mais bon à retenir. 
+
+Quand une variable est déclarée dans une méthode, sa portée est la méthode (on ne peut pas y accéder hors de la méthode). Quand on déclare une variable/une propriété au niveau de la classe alors sa portée… est la classe ! Nous verrons qu’il est possible de déroger à ceci. 
+
+=== Création des actions
+
+Les actions sont des méthodes ou des fonctions. Dans un premier temps on va vouloir:
+
+* Ajouter 1 au score
+
+* Remettre le score à 0
+
+* Pourvoir connaitre la valeur du score pour plus tard l’afficher sur l’écran
+
+
+[source,java]
+----
+public void AjouteUnAuScore()
+{}
+
+public void RemettreScoreAZero()
+{}
+
+public int EnvoyerScore()
+{}
+----
+
+==== Ajouter une victoire au score
+
+[source,java]
+----
+public void AjouteUnAuScore()
+{
+    m_score = m_score + 1;
+    
+    Console.WriteLine("Le score est maintenant: " + m_score.ToString());
+}
+----
+
+J’ai ajouté l’ajout d’un affichage du score sur la console pour pouvoir vérifier que tout fonctionne correctement. Ce n’est pas indispensable mais ça peut être très pratique.
+
+
+==== Remettre le score à 0
+
+[source,java]
+----
+public void RemettreScoreAZero()
+{
+    m_score = 0;
+    
+    Console.WriteLine("Le score est rénitialisé à" + m_score.ToString());
+}
+---- 
+
+J’ai ajouté l’ajout d’un affichage du score sur la console pour pouvoir vérifier que tout fonctionne correctement. Ce n’est pas indispensable mais ça peut être très pratique.
+
+
+==== Envoyer le score
+
+[source,java]
+----
+public int EnvoyerScore()
+{
+    return m_score;
+}
+----
+
+Pour le moment nous avons décrit ce que devait faire le joueur mais nous n’avons pas encore de joueur et ça ne sert finalement pas à grand chose. 
+
+=== Utiliser notre classe toute neuve 
+
+On s’en souvient, le code dans *"Program.cs"* est ce qui se lance quand le programme démarre. On va supprimer le code que nous avons ajouté depuis le début de ce livre et créer un nouveau joueur. 
+
+
+[source,java]
+----
+class MainClass
+{
+    public static void Main(string[] args)
+    {
+    }
+}
+----
+
+==== Création d’un joueur
+
+[source,java]
+----
+public static void Main(string[] args)
+{
+    Joueur nael = new Joueur();
+}
+----
+
+Dans ce code on voit que l’on crée une variable appelée nael de type *"Joueur"*. Et oui, en plus de string, int, bool, on a maintenant un nouveau type, celui que nous avons construit nous même: "Joueur".
+
+Le mot clé *"new"* permet de dire au compilateur "crée moi une nouvelle instance de l’objet dont le nom est juste après".
+
+Que se passe t-il si ton lance le programme ?
+
+[#img-fenetre05]
+.Le message du contructeur est affiché
+image::Fenetre05.png[]
+
+Tout se passe comme prévu: 
+
+* Main est lancé
+* Une instance de la classe "Joueur" est créée
+* On passe automatiquement dans le constructeur. On le sait car le texte "Mon objet vient d’être créé" s’affiche. 
+
+
+==== Appel des actions de notre joueur
+
+[source,java]
+----
+public static void Main(string[] args)
+{
+    Joueur nael = new Joueur();
+    
+    nael.AjouteUnAuScore();
+    nael.AjouteUnAuScore();
+    nael.RemettreScoreAZero();
+}
+----
+
+C’est plutôt facile. On prend le nom de l’objet (ici nael) et on appelle tout simplement la méthode comme ci dessus. 
+
+Observons le résultat:
+
+[#img-fenetre06]
+.Les actions sont correctement exécutées
+image::Fenetre06.png[]
+
+* Le constructeur est appelé avant toute autre chose
+* On ajoute 1 au score : le score est égal à 1
+* On ajoute à nouveau 1 au score: le score est égal à 2
+* On remet le score à 0: le score est égal à 0
+
+
+==== Mais comment s’appelle notre joueur ? 
+
+
+Nous allons améliorer notre classe pour pouvoir lui passer le nom de joueur qui aura été saisi au clavier. 
+
+Dans un premier temps on va modifier le constructeur pour pouvoir lui passer un nom de joueur et une couleur. On modifie aussi la phrase qui sera affichée pour être certain que tout fonctionne bien.
+
+[source,java]
+----
+public Joueur(string nomJoueur, string couleur)
+{
+    m_nomJoueur = nomJoueur;
+    m_couleur = couleur;
+    
+    Console.WriteLine("Le joueur " + m_nomJoueur + " est créé");
+}
+----
+
+Ensuite on va modifier l’instanciation de la classe:
+
+* On demande à l’utilisateur d’entrer un nom de joueur
+* Le joueur ne s’appelle plus nael mais "joueur 1"
+* On passe le nom du joueur saisi par l’utilisateur  comme paramètre 
+
+[source,java]
+----
+public static void Main(string[] args)
+{
+    Console.WriteLine("Entrer le nom du joueur 1:");
+    string nomJoueur = Console.ReadLine();
+    
+    Joueur joueur1 = new Joueur(nomJoueur, "Bleu");
+    joueur1.AjouteUnAuScore();
+    joueur1.AjouteUnAuScore();
+    joueur1.RemettreScoreAZero();
+}
+----
+
+Ce que l’on observe quand on lance le programme:
+C’est exactement ce que l’on voulait réaliser !
+
+[#img-fenetre07]
+.Le nom du joueur est correctement pris en compte
+image::Fenetre07.png[]
+
+Une dernière amélioration: on veut créer deux joueurs.
+
+Modifications de Program.cs
+
+[source,java]
+----
+public static void Main(string[] args)
+{
+    Console.WriteLine("Entrer le nom du joueur 1:");
+    string nomJoueur1 = Console.ReadLine();
+    
+    Console.WriteLine("Entrer le nom du joueur 2:");
+    string nomJoueur2 = Console.ReadLine();
+    
+    Joueur joueur1 = new Joueur(nomJoueur1, "Bleu");
+    Joueur joueur2 = new Joueur(nomJoueur2, "Rouge");
+    
+    joueur1.AjouteUnAuScore();
+    joueur1.AjouteUnAuScore();
+    joueur2.AjouteUnAuScore();
+    joueur1.RemettreScoreAZero();
+}
+----
+
+Modification de Joueur.cs
+
+[source,java]
+----
+public class Joueur
+{
+    private int m_score;
+    private string m_nomJoueur;
+    private string m_couleur;
+    
+    public Joueur(string nomJoueur, string couleur)
+    {
+        m_nomJoueur = nomJoueur;
+        m_couleur = couleur;
+        
+        Console.WriteLine("Le joueur " + m_nomJoueur + " est créé");
+        Console.WriteLine("Son char est de couleur " + m_couleur);
+    }
+    
+    public void AjouteUnAuScore()
+    {
+        m_score = m_score + 1;
+        
+        Console.WriteLine("Le score du joueur " + m_nomJoueur + 
+        " est maintenant: " + m_score.ToString());
+    }
+    
+    public void RemettreScoreAZero()
+    {
+        m_score = 0;
+        
+        Console.WriteLine("Le score du joueur " + m_nomJoueur + 
+        " est rénitialisé à " + m_score.ToString());
+    }
+    
+    public int EnvoyerScore()
+    {
+        return m_score;
+    }
+}
+----
+
+On obtient:
+
+[#img-fenetre08]
+.Les deux joueurs sont correctements affichés
+image::Fenetre08.png[]
+
+On le voit, nos instances partent du même moule, la classe *"Joueur"* mais les deux instances sont hermétiques. Le joueur 1 a ses valeurs de propriétés et le joueur 2 a les siennes.

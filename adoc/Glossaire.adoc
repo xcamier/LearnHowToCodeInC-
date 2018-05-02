@@ -1,0 +1,48 @@
+[appendix]
+== Glossaire
+
+La table ci-dessous contient les mots clés utilisés dans le monde du développement logiciel. Nous avons une forte tendance à mélanger les termes français et les termes anglais. C’est pourquoi les deux versions seront proposées.
+
+
+[width="100%",options="header",cols="0,2,2,4"]
+|====================
+| # 
+| Mot 
+| Version Anglaise  
+| Explication 
+
+| 1 
+| Code 
+| Code 
+| Le programme ou la partie de programme écrite dans un langage de programmation donné 
+
+| 2 
+| Épreuve 
+| Mockup 
+|Représentation abstraite de ce que l’on veut réaliser. On peut utiliser un logiciel de conception ou un simple dessin papier
+
+| 3
+| Environnement de développement 
+| IDE 
+| Le logiciel qui va nous permettre d'écrire, vérifier, exécuter, déboguer notre programme
+
+| 4 
+| Syntaxe 
+| Syntax 
+| La grammaire et le vocabulaire qui vont permettre d'écrire du code dans un langage compréhensible par le compilateur
+
+| 5 
+| Bibliothèques 
+| Library 
+| Regroupement, souvent par thème, de fonctions réutilisables par l’utilisateur. On aura par exemple une bibliothèque pour gérer le dessin à l’écran, une bibliothèque pour gérer des listes etc.  
+
+| 6 
+| Portée 
+| Scope 
+|La portée d'une variable, d'une méthode ou d’une classe est leur capacité à être accédés depuis le lieu de déclaration ou depuis d’autres endroits du programme.
+
+| 7 
+| Ramasse miettes 
+| Garbage collector 
+| C'est une partie automatisée par le système qui permet de gérer la mémoire. Il détecte quand une variable ou une instance d'objet n'est plus utilisée et décide de la détruire pour libérer de la mémoire et des ressources.
+|====================

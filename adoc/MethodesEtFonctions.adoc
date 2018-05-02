@@ -1,0 +1,286 @@
+:imagesdir: ./imgs
+
+== Méthodes et fonctions
+=== Notre première méthode
+
+Nous allons rendre notre morceau de programme un peu plus complexe et un peu plus intelligent. Le code ci dessous…
+
+
+[source,java]
+----
+public static void Main(string[] args)        
+{           
+    string nom = "CAMIER";
+    
+    Console.WriteLine("Voici un nom:"); 
+    Console.WriteLine(nom);
+    Console.WriteLine(""); 
+    
+    nom = "BRILLON";
+    
+    Console.WriteLine("Voici un nom:");
+    Console.WriteLine(nom);    
+    Console.WriteLine(""); 
+    
+    nom = "SALMON"; 
+    
+    Console.WriteLine("Voici un nom:");            
+    Console.WriteLine(nom);            
+    Console.WriteLine("");        
+}
+----
+
+… donne l’affichage ci dessous:
+
+[#img-fenetre02]
+.Affichage de blocs assez semblables 
+image::Fenetre02.png[]
+
+
+Si on observe on voit que des morceaux du programme se répètent. C’est quand même du gâchis. 
+
+Imaginons les scénarios suivants: 
+
+. On veut afficher 1000 prénoms. Va t-on répéter le bout de code 1000 fois ? 
+. On veut changer ce qui est affiché et, par exemple, ajouter le texte "ce beau gosse" juste après le nom. Va t-on devoir modifier tous les endroits et s’il y en a 1000 le faire 1000 fois ?
+. On veut afficher un nom depuis plusieurs endroits tu programme. Va t-on recopier le code à tous les endroits du programme ? 
+
+Vous vous en doutez, la réponse à ces questions est non. 3 fois non. Pour résoudre ces cas, les créateurs de langages de programmation ont crée les méthodes. Une méthode permet de décrire des choses à faire par le programme à un endroit du code et de demander au programme d’exécuter ces choses à faire depuis un autre endroit du code. 
+
+On l’a dit, on voit que du code se répète:
+
+[source,java]
+----
+Console.WriteLine("Voici un nom: ");
+Console.WriteLine(nom);
+Console.WriteLine("");
+----
+
+Un bloc de code qui se répète au moins 2 fois doit amener à se poser des questions. Ici on est dans le cas 1.  Si on voulait écrire 1000 noms on ne répéterait pas ces 3 lignes 1000 fois ! Surtout qu’ici il n’y a que trois lignes mais il pourrait y en avoir beaucoup plus. 
+
+C’est le moment de créer une méthode:
+
+[source,java]
+----
+private static void AfficherNom()
+{
+    Console.WriteLine("Voici un nom: ");
+    Console.WriteLine(nom);
+    Console.WriteLine("");
+}
+----
+
+[underline]#Explications de la syntaxe:#
+
+* *private*: ça indique que la méthode ne sera visible que par la classe dans lequel le code est écrit. Si on crée une autre classe, la méthode ne pourra pas être appelée. Si on voulait qu’une autre classe puisse appeler la méthode "AfficherNom()", alors il faudrait remplacer le mot "private" par le mot "public". C’est ce que l’on appelle la "la portée" [6].
+
+* *static*: passons, c’est trop compliqué pour le moment
+
+* *void*: ça veut dire que la méthode ne va rien retourner comme valeur.
+
+* *AfficherNom()*: c’est le nom de la méthode. C’est par ce nom qu’elle sera appelée. 
+
+* *{* et *}*: indiquent le début et la fin de la méthode
+
+	
+Notre programme doit maintenant ressembler à ça:
+
+[source,java]
+----
+public static void Main(string[] args)        
+{            
+    string nom = "CAMIER";
+    AfficherNom();
+    
+    nom = "BRILLON";            
+    AfficherNom();
+    
+    nom = "SALMON";
+    AfficherNom();
+}
+
+private static void AfficherNom()
+{
+    Console.WriteLine("Voici un nom: ");
+    Console.WriteLine(nom);
+    Console.WriteLine("");
+}
+----
+
+On essaye de compiler ? Aille, ça ne fonctionne pas ! Pourquoi ? 
+
+* La méthode *"AfficherNom()"* doit afficher le contenu de la variable "nom"
+
+* La variable *"nom"* est déclarée dans la méthode *"Main"*. Sa portée [6] est limitée à la méthode *"Main"*
+
+* Les variables déclarées à l’intérieur d’une méthode ne sont accessibles qu’à l’intérieur de la méthode dans laquelle elles sont déclarées. Ainsi la variable "nom" ne peut être accédée que depuis la méthode *"Main"*
+
+Sommes nous coincés ? Pas du tout ! Le langage de programmation permet de passer un paramètre d’une méthode à l’autre sans changer la portée de la variable. Modifions notre méthode *"AfficherNom()"* pour lui passer en paramètre la variable *"nom"*. Ensuite, dans la méthode *Main*, on va modifier les appels à la méthode *"AfficherNom()"* pour lui passer en paramètre la variable *"nom"*.
+
+[source,java]
+----
+public static void Main(string[] args)
+{
+    string nom = "CAMIER";
+    AfficherNom(nom);
+    
+    nom = "BRILLON";
+    AfficherNom(nom);
+    
+    nom = "SALMON";
+    AfficherNom(nom);
+}
+
+private static void AfficherNom(string nomParametre)
+{
+    Console.WriteLine("Voici un nom: ");
+    Console.WriteLine(nomParametre);
+    Console.WriteLine("");
+}
+----
+
+On compile et hop, on a exactement la même chose que tout à l’heure sans avoir plusieurs fois le même code.
+
+[#img-fenetre03]
+.La méthode permet d'avoir le même résultat que précédement
+image::Fenetre03.png[]
+
+=== Notre première fonction
+
+On l’a dit tout à l’heure, une fonction est pour ainsi dire une méthode qui renvoie une valeur. Par exemple une fonction qui fait la somme de deux entiers va renvoyer à son appelant une valeur correspondant à la somme des deux entiers. Les valeurs de retour d’une fonction sont les mêmes que les valeurs types d’une variable (int, string, bool…). Par déduction on va pouvoir stocker dans des variables le résultat d’une fonction.
+
+Imaginons une fonction qui va ajouter "ce beau gosse" à notre nom:
+
+[source,java]
+----
+private static string CompleterNom(string nomParametre)
+{
+    string nouvelleValeur = nomParametre + " ce beau gosse";
+    
+    return nouvelleValeur;
+}
+----
+
+[underline]#Explications de la syntaxe:#
+
+* *private*: ça indique que la fonction ne sera visible que par la classe dans lequel le code est écrit. Si on crée une autre classe, la fonction ne pourra pas être appelée. Si on voulait qu’une autre classe puisse appeler la fonction "CompleterNom", alors il faudrait remplacer le mot "private" par le mot "public". C’est ce que l’on appelle la "la portée" [6].
+
+* *static*: passons, c’est trop compliqué pour le moment
+
+* *string*: C’est le type de donnée que la fonction retourne.
+
+* *CompléterNom()*: c’est le nom de la foncton. C’est par ce nom qu’elle sera appelée. 
+
+* *string nomParametre*: c’est le type et le nom du paramètre à passer à la fonction
+
+* *{* et *}*: indiquent le début et la fin de la fonction
+
+[source,java]
+----
+string nouvelleValeur = nomParametre + " ce beau gosse";
+
+----
+
+* On crée une variable *"nouvelleValeur"* dans laquelle on va mettre la valeur *"nomParametre"* à laquelle on va ajouter *"ce beau gosse"*.
+
+[source,java]
+----
+return nouvelleValeur;
+----
+
+* On retourne la variable *"nouvelleValeur"* à l’appelant. Le type de variable retournée doit correspondre au type déclaré dans la déclaration de la fonction comme ci dessous
+
+[source,java]
+----
+private static string CompleterNom(string nomParametre)
+----
+
+Maintenant il faut bien que cette fonction serve à quelque chose. Lorsque j’ai expliqué l’intérêt de regrouper en méthode j’ai présenté 3 cas:
+
+. On veut afficher 1000 prénoms. Va t-on répéter le bout de code 1000 fois ? 
+
+. On veut changer ce qui est affiché et, par exemple, ajouter le texte "ce beau gosse" juste après le nom. Va t-on devoir modifier tous les endroits et s’il y en a 1000 le faire 1000 fois ?
+
+. On veut afficher un nom depuis plusieurs endroits tu programme. Va t-on recopier le code à tous les endroits du programme ? 
+
+Ces cas existent aussi pour les fonctions. On a traité le cas 1. en créant notre méthode *"AfficherNom()"*, on va traiter le cas 2. grâce à notre fonction toute neuve. Modifions notre méthode *"AfficherNom()"* afin qu’elle ajoute *"ce beau gosse"* au nom passé en paramètre.
+
+[source,java]
+----
+private static void AfficherNom(string nomParametre)
+{
+    string nomAAfficher = CompleterNom(nomParametre);
+    Console.WriteLine("Voici un nom: ");
+    Console.WriteLine(nomAAfficher);
+    Console.WriteLine("");
+}
+----
+
+* On dit au programme: crée une variable « *"nomAAfficher"* et stocke-y ce que la fonction *"CompleterNom()"* te retournera
+
+* Magie de l’informatique, le paramètre *"nomParametre"* qui est passé à *"AfficherNom()"* peut être cascadé à la fonction *"CompleterNom()"*
+
+On obtient alors:
+
+[#img-fenetre04]
+.La fonction permet de récupérer une valeur que l'on va manipuler comme n'importe quelle variable
+image::Fenetre04.png[]
+
+
+=== Elégance des méthodes et fonctions
+
+Quelques règles à respecter lorsque l'on défini une méthode ou une fonction. Par abus de langage je ne parlerai que de méthodes mais ces règles valent aussi pour les fonctions:
+
+* Le nom de la méthode doit être explicite: en lisant le nom on doit comprendre ce qu'elle réalise
+
+* Une méthode doit être assez courte. On dit habituellement "pas plus d'un écran en hauteur". Si elle fait plus qu'un écran il doit être possible de décomposer la méthode en plusieurs méthodes
+
+* Une méthode doit avoir une mission unique. Si on est tenté d'appeler sa méthode "FaitCeciEtFaitCela" alors il faut probablement créer une méthode "FaitCeci" et une méthode "FaitCela"
+
+* On a vu que l'on pouvait passer des variables en paramètres à une méthode. On peut en théorie en passer plusieurs en les séparant par une virgule (nous y reviendrons). Une règle à retenir et que si on doit passer plus de 3 paramètres alors il faut commencer à réfléchir à faire autrement.
+
+==== Le compilateur est malin 
+
+Comment fonctionne le passage de paramètres ? Quand le compilateur compile, il comprend que l’on veut communiquer à la méthode « AfficherNom » le contenu de la variable « nom ». Mais au lieu d’en donner le contenu, il va dire où ça se trouve dans la mémoire. 
+
+Par exemple, au lieu de passer la valeur « CAMIER » il va dire « c’est dans mémoire à partir de la zone 5. Pour un ordinateur c’est beaucoup plus facile et beaucoup plus rapide à comprendre. Notre exemple est relativement simple mais imaginons que l’on passe une très grosse chaine de caractère. On comprend bien l’intérêt fournir l’adresse (le numéro de case) que de fournir le contenu. 
+
+[#img-memoire05]
+.La fonction permet de récupérer une valeur que l'on va manipuler comme n'importe quelle variable
+image::Memoire05.png[]
+
+On a vu aussi qu’une variable pouvait être passée de méthode en méthode. S’il fallait à chaque fois passer tout le contenu, on remplirait vite la mémoire car il faudrait copier autant de fois le bloc et ce serait vraiment vraiment lent dans un gros programme.
+
+==== Le système est malin
+
+Quand le programme déclare et utilise une variable, il met dans une mémoire secrète un compteur d’utilisation. Quand le programme n’utilise plus la variable ce compteur tombe à 0 et le système comprend qu’il peut effacer la mémoire. C’est ce que l’on appelle le ramasse miettes [7].
+
+==== Un peu de fiction 
+
+À quoi ressemblerait notre programme si nous n'avions pas utilisé de méthodes et de fonctions ?
+
+[source,java]
+----
+public static void Main(string[] args)
+{
+    string nom = "CAMIER";
+    string nomAAfficher = nom + " ce beau gosse";
+    Console.WriteLine("Voici un nom: ");
+    Console.WriteLine(nomAAfficher);
+    Console.WriteLine("");
+    
+    nom = "BRILLON";
+    nomAAfficher = nom + " ce beau gosse";
+    Console.WriteLine("Voici un nom: ");
+    Console.WriteLine(nomAAfficher);
+    Console.WriteLine("");
+    
+    nom = "SALMON";
+    nomAAfficher = nom + " ce beau gosse";
+    Console.WriteLine("Voici un nom: ");
+    Console.WriteLine(nomAAfficher);
+    Console.WriteLine("");
+}
+----
+
+C’est moche et ça fait quand même beaucoup de répétitions. Même sans être développeur professionnel on perçoit qu’il y avait vraiment mieux à faire. Ca tombe bien, nous l’avons fait !

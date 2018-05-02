@@ -1,0 +1,36 @@
+= Apprendre à coder en C#: Le guide du débutant
+:author: Xavier CAMIER  
+:revumber: Version 0.2 
+:revdate: 01.05.2018
+:revremark: First version with Asciidoctor
+:sectnums:
+:toc:
+:toc: left
+:toclevels: 5
+:toc-title: Sommaire
+:experimental:
+:description: Example of AsciiDoc document
+:keywords: AsciiDoc
+:imagesdir: ./imgs
+
+Préambule optionnel
+
+include::Introduction.adoc[]
+
+include::Projet.adoc[]
+
+include::LeQuoi.adoc[]
+
+include::Planification.adoc[]
+
+include::LeComment.adoc[]
+
+include::PremieresLignesCode.adoc[]
+
+include::MethodesEtFonctions.adoc[]
+
+include::RetourAuJeu.adoc[]
+
+include::Conventions.adoc[]
+
+include::Glossaire.adoc[]

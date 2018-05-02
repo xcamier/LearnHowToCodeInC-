@@ -1,0 +1,10 @@
+== Introduction
+
+Le but de ce document est d’acquérir les connaissances suffisantes permettant de comprendre les bases du développement logiciel. Ainsi, à travers un exemple construit de bout à bout nous apprendrons à:
+
+* Comprendre les mots du développement logiciel
+* Apprivoiser l’environnement de développement Visual Studio
+* Comprendre les fondamentaux tu développement logiciel
+* Apprendre le langage de programmation C#
+* Utiliser les outils de base du professionnel
+* Développer des logiciels fiables et robustes 

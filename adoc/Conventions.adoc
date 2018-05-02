@@ -1,0 +1,14 @@
+[appendix]
+== Conventions de codage
+
+La table ci dessous présente les conventions de codage en C#. Il est possible d’adopter d’autres conventions sans que cela ne pose problème. Le tout est d’être cohérent à travers son programme. 
+
+
+[width="100%",options="header", cols="0,3,1"]
+|====================
+| # | Type | Exemple 
+| 1 | Nom de variable dans une méthode | scoreJoueur 
+| 2 | Nom de méthode ou de fonction | UneFonction 
+| 3 | Nom de classe | UneClasse 
+| 4 | Variable de membre | m_nomDeVariable 
+|====================

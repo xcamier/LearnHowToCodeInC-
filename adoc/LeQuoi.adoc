@@ -1,0 +1,14 @@
+:imagesdir: ./imgs
+
+== On pense au résultat final - le « quoi »
+
+On a une description texte, on va essayer de représenter ce que l’on veut obtenir à l’écran en isolant les éléments de base. Ca s’appelle faire un  « mockup » [2]. Pour faire simple nous allons faire un dessin à la main mais il existe de nombreux logiciels de conception. A titre personnel et lorsque quand je ne dois pas communiquer au delà mon équipe, le favorise le papier/crayon.
+
+
+[#img-ecranjeu]
+.Ecran de jeu d’une partie de Tanker
+image::EcranJeu.png[]
+
+Ecran de jeu d’une partie de Tanker
+
+Selon votre envie et votre persévérance nous pourrons rendre le jeu plus sophistiqué et pourquoi pas y intégrer vos idées. Mais on touche là à un premier concept du développement: l’approche incrémentale.

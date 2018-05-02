@@ -1,0 +1,11 @@
+:imagesdir: ./imgs
+
+== Parce que c’est notre projet !
+
+Quoi de mieux pour apprendre en s’amusant que réaliser un petit jeu. Notre objectif sera de réaliser un combat de tanks:
+
+* Dans un labyrinthe vu de dessus, deux joueurs dirigeront en temps réel un tank
+* Les tanks pourront tirer des obus
+* Un tank touché trois fois par un obus sera détruit et l’adversaire marquera 1 point
+* Les murs ne peuvent pas être détruits 
+* Le premier joueur arrivé à 3 points aura gagné la partie

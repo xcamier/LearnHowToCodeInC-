@@ -1,0 +1,134 @@
+:imagesdir: ./imgs
+
+== Réfléchir au problème - le « comment »
+
+À la manière d’un artisan, il est important que le développeur connaisse son environnement de travail, ses outils et qu’il ait une vue claire de comment il va réaliser son étape. Dans ce chapitre nous allons voir en détail comment réaliser l’étape 1.
+
+=== Programmation objet
+
+Tout comme on décompose le projet en étapes, on peut décomposer des morceaux du projet en « objets ». Un objet est un morceau de code:
+
+* Ayant une fonction unique
+* Ayant des propriétés et des capacités
+* Ayant pour but d’être réutilisé dans une autre partie du programme ou dans un autre programme
+
+Notre programme va être un ensemble d’objets que l’on va faire interagir ensemble.
+
+Si on regarde notre projet, à première vue quelles idées d’objets pouvons nous avoir ?
+
+* Le joueur
+* Le tank
+* Le labyrinthe
+* La zone de jeu
+
+=== Notre premier objet: le joueur
+==== Ses propriétés
+
+
+Quelles peuvent être les propriétés du joueur ?
+
+* Son nom
+* Sa couleur
+* Son score
+
+Observons les propriétés. Quels types d’informations allons nous y mettre:
+
+* Le nom: du texte
+* Son score: un chiffre entier.
+* La couleur: ça dépend un peu… mais c’est soit du texte soit un nombre
+
+
+Un langage de programmation gère ce que l’on appelle des types de données. D’un langage à l’autre les types sont à peu près les mêmes, seule la syntaxe (la façon de les écrire dans le langage) change.  Les types de données communs sont:
+
+
+[width="100%",options="header", cols="1,1,2"]
+|====================
+|Nom du type  |Nom en anglais  | Exemple  
+| Caractère  | char  | Une lettre, un chiffre ou un symbole (a, 1, &)  
+| Chaine de caractères  | string  | Une phrase (je m'appelle Naël) 
+| Entier  | int | Une valeur entière (1, 10, 200, 377) 
+| Décimal | decimal | Une valeur décimale (3.14, 1.023  
+| Booléen | bool | Soit vrai, soit faux (true, false) 
+|====================
+
+
+Si on transpose à notre joueur nous aurons donc un objet comme suit:
+
+
+[plantuml,joueurSimple,png]
+--
+class Joueur
+Joueur : string Nom
+Joueur : string Couleur
+Joueur : int Score
+--
+
+==== Ses capacités
+
+On l’a vu, un objet a des propriétés (ses caractéristiques) et des capacités. Que peut faire notre objet ? Quelle partie de ses propriétés va être traitée ou modifiée ? Pour le moment ce qui est évident est le score. A chaque fois que le joueur va gagner une partie, son score va augmenter. Il faut penser aussi que si une partie de jeu est terminée, son score va être remis à 0.
+
+En programmation quand on veut exécuter une action ça se fait via une méthode ou via une fonction. La différence entre les deux est qu’une fonction renvoie un résultat à celui qui a appelé la fonction alors qu’une méthode ne fait qu’exécuter son code.
+
+On vient donc de dire que l’on veut augmenter le score ou le remettre à 0. Pour se faire on va créer deux méthodes. Une appelée « MettreScoreAZero » et une « AugmenterScore ». Au final notre objet joueur aura l’allure suivante:
+
+
+[plantuml,joueurMethodes,png]
+--
+class Joueur
+Joueur : -string Nom
+Joueur : -string Couleur
+Joueur : -int Score
+Joueur : +void MettreAZero()
+Joueur : +void AugmenterScore()
+--	
+		
+==== Instances d’objets
+
+Pour le moment un objet n’a rien de concret. On parle ici d’un joueur type mais on ne sait pas si on parle du joueur 1 ou du joueur 2 et c’est normal. Un objet est un modèle. C’est comme un « moule ». Quand on va programmer, on va dire au langage « à partir de ce modèle crée moi le Joueur 1 ». Et ensuite on va dire au langage « à partir de ce modèle crée moi le Joueur 2 ». On dira que :
+
+* Joueur1 est une instance de Joueur
+* Joueur2 est une instance de Joueur
+
+On pourrait créer autant de joueurs que la mémoire de l’ordinateur le permet. Pour se représenter un peu ce qui se passe dans l'ordinateur on peut imaginer la mémoire comme une grille. Quand on crée un objet, le programme réserve sans qu'on le sache un morceau d'espace pour ses propriétés. Dans notre cas:
+		
+[#img-memoire00]
+.Etat de la mémoire
+image::Memoire00.png[]
+
+Les couleurs en bleu représentent les cases de mémoires utilisées par le joueur Naël:
+
+* les 4 premières cases sont utilisées par la propriété nom: Naël
+* Les 4 cases suivantes sont utilisées par la propriété couleur: Bleu
+* Les deux cases suivantes sont utilisées pour enregistrer le score
+
+Les couleurs en vert représentent les cases de mémoires utilisées par le joueur Nathan:
+
+* Les 6 premières cases sont utilisées par la propriété nom: Nathan
+* Les 5 cases suivantes sont utilisées par la propriété couleur: Rouge
+* Les deux cases suivantes sont utilisées pour enregistrer le score
+
+C'est bien sur un peu plus compliqué que cela mais c'est une représentation assez fidèle de ce qui se passe.
+
+=== Préparation de l’environnement de développement
+==== IDE
+
+L'IDE [3] est l'outil qui va nous faciliter la vie. Son choix est important car c'est ici que l'essentiel du travail sera fait. Il existe différents types d'IDE. Visual Studio (PC ou Mac) est probablement le plus connu et le plus complet. XCode est l'IDE de référence pour le Mac. Pour simplifier le cours et favoriser la collaboration, nous travaillerons tous sous Visual Studio. Certains sur Mac, d'autres sur PC. Le look est un peu différent mais le langage de programmation et les repères sont les mêmes.
+
+L'IDE est d'abord un éditeur de texte avancé qui va colorer le texte pour le rendre plus lisible, qui va proposer des options pour écrire du code plus vite et fournir des raccourcis pour accéder plus rapidement aux différentes parties du programme. Par exemple, quand on a un programme un peu complexe, que l'on veut modifier une méthode, on veut vérifier là où est utilisée notre méthode.
+
+Un IDE va aussi savoir appeler plein d'autres programmes pour traduire le code [1] que l'on va écrire en langage compréhensible par l'ordinateur. 
+
+
+==== Langage de programmation
+
+L'IDE est là où l'on va écrire mais un IDE peut supporter plusieurs langages de programmation. C'est à l'utilisateur en fonction de son besoin et de ses compétences de choisir le langage qui convient. Attention, un IDE ne connait pas tous les langages de programmation. Il faut donc bien choisir le couple IDE/Langage que l'on veut utiliser. On a vu que nous allons travailler sous Visual studio et le langage que j'ai choisi est C#. C'est un langage moderne, polyvalent, en pleine expansion et multi plateforme. Tout comme le français, l'anglais ou l'allemand, un langage a une syntaxe [4]. C'est un peu sa grammaire et son vocabulaire.
+	
+
+==== Compilateur
+
+Le rôle du compilateur est de traduire notre code écrit dans un certain langage et selon une syntaxe [4] dans un autre langage compréhensible par un ordinateur (et moins par un humain). On va appuyer sur un bouton de l'IDE pour dire de compiler ce que l'on a écrit afin que l'ordinateur sache qu'en faire. Le compilateur va renvoyer des informations à l'IDE pour dire "c'est bon ça a fonctionné" ou au contraire "aille, il y a un problème".
+
+
+==== Exécution en mode test
+
+Une fois compilé on veut lancer le programme pour pouvoir l'utiliser. On va le voir dans le chapitre suivant, l'IDE permet de faire ça aussi. Ainsi si on clique sur le bouton image:imgs/play.png[Play, title="Play"] alors l'IDE demande au compilateur de compiler le programme et quand le compilateur répond que tout est ok, lance le programme.
